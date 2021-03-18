@@ -55,10 +55,13 @@ class ScoreFragment : Fragment() {
                 false
         )
 
+        binding.scoreViewModel = viewModel
+        binding.lifecycleOwner= viewLifecycleOwner
+/*
         viewModel.score.observe(viewLifecycleOwner,  { newScore ->
             binding.scoreText.text = newScore.toString()
         })
-
+*/
         binding.scoreText.text = viewModel.score.toString()
 
 
@@ -70,7 +73,7 @@ class ScoreFragment : Fragment() {
             }
         })
 
-        binding.playAgainButton.setOnClickListener {  viewModel.onPlayAgain()  }
+        //binding.playAgainButton.setOnClickListener {  viewModel.onPlayAgain()  }
 
         return binding.root
     }

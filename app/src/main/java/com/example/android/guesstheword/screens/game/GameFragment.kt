@@ -51,6 +51,13 @@ class GameFragment : Fragment() {
                 false
         )
 
+        binding.gameViewModel = viewModel
+        binding.lifecycleOwner= viewLifecycleOwner
+/*
+        viewModel.word.observe(viewLifecycleOwner, { newWord ->
+            binding.wordText.text = newWord
+        })
+*/
         viewModel.score.observe(viewLifecycleOwner,  { newScore ->
             binding.scoreText.text = newScore.toString()
         })
@@ -61,9 +68,9 @@ class GameFragment : Fragment() {
             if (hasFinished) gameFinished()
         })
 
-        binding.correctButton.setOnClickListener {onCorrect() }
-        binding.skipButton.setOnClickListener { onSkip() }
-        binding.endGameButton.setOnClickListener { onEndGame() }
+        //binding.correctButton.setOnClickListener {onCorrect() }
+        ///binding.skipButton.setOnClickListener { onSkip() }
+        //binding.endGameButton.setOnClickListener { onEndGame() }
         updateScoreText()
         updateWordText()
         return binding.root
@@ -77,7 +84,7 @@ class GameFragment : Fragment() {
 
 
     /** Methods for updating the UI **/
-
+/*
     private fun onSkip() {
         viewModel.onSkip()
         updateWordText()
@@ -88,6 +95,11 @@ class GameFragment : Fragment() {
         updateScoreText()
         updateWordText()
     }
+    private fun onEndGame() {
+        viewModel.onGameFinish()
+    }
+    */
+
     private fun updateWordText() {
         binding.wordText.text =viewModel.word.value
     }
@@ -96,9 +108,7 @@ class GameFragment : Fragment() {
         binding.scoreText.text =viewModel.score.value.toString()
     }
 
-    private fun onEndGame() {
-        gameFinished()
-    }
+
 
     private fun gameFinished() {
         Toast.makeText(activity, "Game has just finished", Toast.LENGTH_SHORT).show()
