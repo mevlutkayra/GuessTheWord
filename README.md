@@ -1,4 +1,4 @@
-ViewModel - ViewModelFactory - LiveData-
+ViewModel and ViewModelFactory -  LiveData and LiveData observers
 ==================================
 Code Lab Solution Code
 ==================================
